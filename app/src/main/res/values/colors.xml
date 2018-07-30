@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#161e4b</color>
+    <color name="colorPrimaryDark">#111638</color>
+    <color name="colorAccent">#818181</color>
+    <color name="blackMask">#b4000000</color>
+    <color name="actionBar">#88000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="facebookBlue">#3b5998</color>
+    <color name="grayHeader">#a2abb9</color>
+    <color name="artistTitle">#3e3e3e</color>
+    <color name="selectedIconColor">#44b6ff</color>
+</resources>
