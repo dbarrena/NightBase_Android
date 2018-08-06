@@ -9,6 +9,7 @@ import expertosbd.gramosa.nightbasekotlinmvp.R
 import expertosbd.gramosa.nightbasekotlinmvp.di.component.DaggerFragmentComponent
 import expertosbd.gramosa.nightbasekotlinmvp.di.module.FragmentModule
 import expertosbd.gramosa.nightbasekotlinmvp.model.Event
+import kotlinx.android.synthetic.main.event_detail.*
 import javax.inject.Inject
 
 class EventDetailFragment: Fragment(), EventDetailContract.View {
@@ -16,6 +17,7 @@ class EventDetailFragment: Fragment(), EventDetailContract.View {
     lateinit var presenter: EventDetailContract.Presenter
 
     private lateinit var rootView: View
+    private lateinit var event: Event
 
     fun newInstance(): EventDetailFragment {
         return EventDetailFragment()
@@ -40,7 +42,9 @@ class EventDetailFragment: Fragment(), EventDetailContract.View {
     }
 
     override fun showDetails(event: Event) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        event_title.text = event.name
+        event_venue.text = "at ${event.venue.name}"
+        event_detail.text = event.description
     }
 
     override fun onDestroyView() {
@@ -57,7 +61,12 @@ class EventDetailFragment: Fragment(), EventDetailContract.View {
     }
 
     private fun initView() {
-        presenter.loadDetails()
+        arguments.let {
+            if (it != null) {
+                event = it.getSerializable("event") as Event
+                showDetails(event)
+            }
+        }
     }
 
     companion object {

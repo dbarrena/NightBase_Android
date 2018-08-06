@@ -1,5 +1,7 @@
 package expertosbd.gramosa.nightbasekotlinmvp.model
 
+import java.io.Serializable
+
 data class Event(
         val idEvent: Int,
         val venue: Venue,
@@ -13,4 +15,4 @@ data class Event(
         val flyerURL: String,
         val artists:ArrayList<Artist>,
         val promoters: ArrayList<Promoter>
-)
+) : Serializable

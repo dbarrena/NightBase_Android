@@ -11,11 +11,9 @@ class EventDetailPresenter: EventDetailContract.Presenter {
     private lateinit var view: EventDetailContract.View
 
     override fun loadDetails() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun subscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun unsubscribe() {

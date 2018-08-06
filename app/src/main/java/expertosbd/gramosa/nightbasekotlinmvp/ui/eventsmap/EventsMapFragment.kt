@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import expertosbd.gramosa.nightbasekotlinmvp.R
 import expertosbd.gramosa.nightbasekotlinmvp.di.component.DaggerFragmentComponent
 import expertosbd.gramosa.nightbasekotlinmvp.di.module.FragmentModule
 import expertosbd.gramosa.nightbasekotlinmvp.model.Event
+import expertosbd.gramosa.nightbasekotlinmvp.ui.eventdetail.EventDetailFragment
 import expertosbd.gramosa.nightbasekotlinmvp.utils.IconFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.jetbrains.anko.longToast
@@ -136,6 +138,17 @@ class EventsMapFragment : Fragment(), EventsMapContract.View, CardAdapter.onCard
     }
 
     override fun goToEventDetails(event: Event) {
+        val ft = activity!!.supportFragmentManager.beginTransaction()
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        val eventDetailFragment = EventDetailFragment()
+
+        val bundle = Bundle()
+        bundle.putSerializable("event", event)
+        eventDetailFragment.arguments = bundle
+        ft.replace(android.R.id.content, eventDetailFragment)
+        ft.addToBackStack(null)
+        ft.commit()
+
         Log.d(TAG, "card clicked: ${event.venue}")
     }
 
